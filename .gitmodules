@@ -1,0 +1,21 @@
+[submodule "establishment-node-service-core"]
+	path = establishment-node-service-core
+	url = https://github.com/establishment/establishment-node-service-core
+[submodule "establishment-node-service-emulator"]
+	path = establishment-node-service-emulator
+	url = https://github.com/establishment/establishment-node-service-emulator
+[submodule "establishment-nodews-proxy"]
+	path = establishment-nodews-proxy
+	url = https://github.com/establishment/establishment-nodews-proxy
+[submodule "establishment-nodews"]
+	path = establishment-nodews
+	url = https://github.com/establishment/establishment-nodews
+[submodule "esablishment-nodews-meta"]
+	path = esablishment-nodews-meta
+	url = https://github.com/establishment/establishment-nodews-meta
+[submodule "establishment-node-core"]
+	path = establishment-node-core
+	url = https://github.com/establishment/establishment-node-core
+[submodule "establishment-nodews-meta"]
+	path = establishment-nodews-meta
+	url = https://github.com/establishment/establishment-nodews-meta

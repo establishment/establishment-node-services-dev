@@ -1,0 +1,24 @@
+{
+  "name": "establishment-node-launchers",
+  "version": "0.1.0",
+  "description": "Establishmen sandbox for node services",
+  "repository": "https://github.com/establishment/establishment-node-services-dev",
+  "dependencies": {
+    "establishment-nodews": "latest",
+    "establishment-nodews-meta": "latest",
+    "establishment-nodews-proxy": "latest",
+    "establishment-node-service-emulator": "latest"
+  },
+  "devDependencies": {
+    "establishment-nodews": "latest",
+    "establishment-nodews-meta": "latest",
+    "establishment-nodews-proxy": "latest",
+    "establishment-node-service-emulator": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/establishment/establishment-node-services-dev/issues"
+  },
+  "homepage": "https://github.com/establishment/establishment-node-services-dev#readme",
+  "author": "Establishment Framework <establishment.framework@gmail.com>",
+  "license": "(Unlicense or Public-Domain)"
+}
