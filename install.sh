@@ -8,5 +8,5 @@ if [ -z "$MY_PATH" ] ; then
   exit 1  # fail
 fi
 
-python3 install.py $MY_PATH/install
-python3 install.py $MY_PATH/mock
+python3 $MY_PATH/install.py install
+python3 $MY_PATH/install.py mock
