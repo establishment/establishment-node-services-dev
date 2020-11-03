@@ -1,0 +1,81 @@
+{
+    "service": {
+        "name": "service-emulator",
+        "status": {
+            "redis": {
+                "address": null
+            }
+        },
+        "instanceId": {
+            "uidFactory": {
+                "redis": {
+                    "address": null
+                }
+            },
+            "path": "pid/$SERVICE_NAME.sid"
+        }
+    },
+    "server": {
+        "services": [
+            {
+                "serviceName": "goaccess",
+                "netstat": {
+                    "local": {
+                        "port": "8765"
+                    },
+                    "protocol": "tcp",
+                    "state": "LISTEN"
+                }
+            }
+        ],
+        "netstatUpdateInterval": {
+            "min": 2500,
+            "max": 3500
+        },
+        "service": {
+            "redis": {
+                "address": null
+            }
+        }
+    },
+    "logging": {
+        "redisAddress": null,
+        "name": "service-emulator",
+        "level": "DEBUG"
+    },
+    "gc": {
+        "initialTimeInterval": {
+            "min": 25000,
+            "max": 30000
+        },
+        "maxLatency": 120,
+        "lowerTimeInterval": {
+            "min": 4000,
+            "max": 6000
+        },
+        "minLatency": 30,
+        "upperTimeInterval": {
+            "min": 30000,
+            "max": 45000
+        }
+    },
+    "registryKeeper": {
+        "redis": {
+            "address": null,
+            "prefix": "meta-registry-nodews-",
+            "stream": "meta-registry-stream",
+            "keepTrack": ["enable-guests", "max-guests", "enable-csrf"]
+        }
+    },
+    "rpcServer": {
+        "redis": {
+            "address": null,
+            "inputStream": "node-rpc-in",
+            "outputStream": "node-rpc-out"
+        }
+    },
+    "machineId": {
+        "script": null,
+        "mockId": 1
+    }
+}
