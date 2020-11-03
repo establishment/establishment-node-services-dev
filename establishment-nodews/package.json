@@ -39,6 +39,6 @@
     "cookie": "latest",
     "establishment-node-core": "latest",
     "establishment-node-service-core": "latest",
-    "ws": "^2.1.0"
+    "ws": "^3.3.1"
   }
 }
