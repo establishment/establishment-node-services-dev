@@ -1,5 +1,5 @@
-const {RedisConnectionPool, RedisQueue} = require("establishment-node-core");
-const {Glue} = require("establishment-node-service-core");
+const {RedisConnectionPool, RedisQueue} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 class MetadataObserver {
     constructor(config) {

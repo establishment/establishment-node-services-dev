@@ -1,7 +1,7 @@
 const WebSocketServer = require("ws").Server;
 
 const {PermissionDispatcher, PermissionChecker, UniqueIdentifierFactory, MetadataObserver,
-       Glue}= require("establishment-node-service-core");
+       Glue}= require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 const ProxiedWebsocketConnection = require("./ProxiedWebsocketConnection.js6.js");
 

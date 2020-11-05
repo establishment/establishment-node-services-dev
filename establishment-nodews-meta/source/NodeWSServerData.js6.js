@@ -1,4 +1,4 @@
-const {Glue} = require("establishment-node-service-core");
+const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 class NodeWSServerData {
     constructor(metadataObserver) {

@@ -1,7 +1,7 @@
 const cookieParser = require("cookie");
 
-const {RedisConnectionPool, Queue, Util, MathEx} = require("establishment-node-core");
-const {Glue, RedisStreamPublisher} = require("establishment-node-service-core");
+const {RedisConnectionPool, Queue, Util, MathEx} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Glue, RedisStreamPublisher} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 let uidToUserConnection = new Map();
 

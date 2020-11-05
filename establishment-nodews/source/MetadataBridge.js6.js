@@ -1,5 +1,5 @@
-const {RedisConnectionPool, Queue} = require("establishment-node-core");
-const {Glue} = require("establishment-node-service-core");
+const {RedisConnectionPool, Queue} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 class MetadataBridge {
     constructor(config, uidFactory) {

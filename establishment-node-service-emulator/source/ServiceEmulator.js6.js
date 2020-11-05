@@ -1,7 +1,7 @@
 const netstat = require("node-netstat");
 
-const {MathEx} = require("establishment-node-core");
-const {Glue, Status} = require("establishment-node-service-core");
+const {MathEx} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Glue, Status} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 class ServiceEmulator {
     constructor(config) {

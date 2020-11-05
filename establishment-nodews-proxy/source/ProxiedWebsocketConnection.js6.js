@@ -1,8 +1,8 @@
 const WebSocket = require("ws");
 const cookieParser = require("cookie");
 
-const {Queue} = require("establishment-node-core");
-const {Glue} = require("establishment-node-service-core");
+const {Queue} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 class ProxiedWebsocketConnection {
     constructor(config, webSocket, permissionDispatcher, permissionChecker, metadataObserver) {

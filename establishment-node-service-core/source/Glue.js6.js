@@ -1,5 +1,5 @@
 const fs = require("fs");
-const {RedisConnectionPool} = require("establishment-node-core");
+const {RedisConnectionPool} = require("../../establishment-node-core/source/EntryPoint.js6.js");
 
 const Logger = require("./Logger.js6.js");
 const RegistryKeeper = require("./RegistryKeeper.js6.js");

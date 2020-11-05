@@ -1,8 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const {GCScheduler} = require("establishment-node-core");
-const {Glue, RPCServer, Util} = require("establishment-node-service-core");
+const {GCScheduler} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Glue, RPCServer, Util} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 const MetadataServer = require("./MetadataServer.js6.js");
 const DefaultConfig = require("./DefaultConfig.js6.js");

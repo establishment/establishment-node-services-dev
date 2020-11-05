@@ -1,6 +1,6 @@
-const {RedisCache} = require("establishment-node-core");
+const {RedisCache} = require("../../establishment-node-core/source/EntryPoint.js6.js");
 const {MetadataObserver, UniqueIdentifierFactory, PermissionChecker,
-       PermissionDispatcher} = require("establishment-node-service-core");
+       PermissionDispatcher} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
 
 const RedisDispatcher = require("./RedisDispatcher.js6.js");
 const UserConnection = require("./UserConnection.js6.js");
