@@ -1,6 +1,7 @@
 const fs = require("fs");
-const {RedisConnectionPool} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {dirname} = require("path");
 
+const {RedisConnectionPool} = require("../../establishment-node-core/source/EntryPoint.js6.js");
 const Logger = require("./Logger.js6.js");
 const RegistryKeeper = require("./RegistryKeeper.js6.js");
 const Status = require("./Status.js6.js");
@@ -55,10 +56,16 @@ module.exports.initService = (config) => {
             if (config.instanceId.hasOwnProperty("path")) {
                 let path = config.instanceId.path;
                 path = path.replace("$SERVICE_NAME", config.name);
-                fs.writeFile(path, id, (err) => {
+                fs.mkdir(dirname(path), {recursive: true}, (err) => {
                     if (err) {
-                        console.log("ServiceGlue::initService failed to save service instance id to file \"" + path + "\"");
+                        console.error(`ServiceGlue::initService failed to save service instance id to file "${path}". Error: ${err}.`);
+                        return;
                     }
+                    fs.writeFile(path, new Uint8Array(Buffer.from(id.toString())), (err) => {
+                        if (err) {
+                            console.error(`ServiceGlue::initService failed to save service instance id to file "${path}". Error: ${err}.`);
+                        }
+                    });
                 });
             }
             serviceInstanceUidFactory.destroy();

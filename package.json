@@ -17,11 +17,8 @@
     "metadata",
     "proxy"
   ],
-  "bin": {
-    "establishment-node-service-emulator": "./establishment-node-service-emulator/bin/establishment-node-service-emulator"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ws-server": "node --expose-gc launchers/establishment-nodews.js6.js"
   },
   "repository": {
     "type": "git",
