@@ -1,0 +1,45 @@
+{
+  "name": "establishment-node-services",
+  "version": "0.1.2",
+  "description": "Establishment's web platform stack of node services.",
+  "main": "index.js",
+  "keywords": [
+    "service",
+    "redis",
+    "establishment",
+    "framework",
+    "core",
+    "util",
+    "emulator",
+    "websocket",
+    "ws",
+    "server",
+    "metadata",
+    "proxy"
+  ],
+  "bin": {
+    "establishment-node-service-emulator": "./establishment-node-service-emulator/bin/establishment-node-service-emulator"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/establishment/establishment-node-services-dev.git"
+  },
+  "author": "Establishment Framework <establishment.framework@gmail.com>",
+  "license": "(Unlicense or Public-Domain)",
+  "bugs": {
+    "url": "https://github.com/establishment/establishment-node-services-dev/issues"
+  },
+  "homepage": "https://github.com/establishment/establishment-node-services-dev#readme",
+  "dependencies": {
+    "bufferutil": "^4.0.2",
+    "cookie": "^0.4.1",
+    "node-netstat": "^1.8.0",
+    "prettysize": "^2.0.0",
+    "redis": "^3.0.2",
+    "utf-8-validate": "^5.0.3",
+    "ws": "^7.3.1"
+  }
+}
