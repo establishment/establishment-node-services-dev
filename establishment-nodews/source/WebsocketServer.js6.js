@@ -25,6 +25,8 @@ class WebsocketServer {
     }
 
     start() {
+        console.log("Starting WebSocketServer", this.config.listen);
+
         this.webSocketServer = new WebSocketServer(this.config.listen);
 
         this.run();

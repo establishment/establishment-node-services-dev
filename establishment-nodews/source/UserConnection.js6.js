@@ -67,7 +67,7 @@ class UserConnection {
             return;
         }
 
-        let token = message.split(" ");
+        let token = message.split(" ", 5); // Keep a limit of 5 parts
 
         if (token[0] == "s" && token.length == 2) {
             // Glue.logger.info("Establishment::UserConnection: " + this.ip + ": want to subscribe to channel '" + token[1] + "'");
@@ -273,7 +273,7 @@ class UserConnection {
             return;
         }
 
-        let cookies = cookieParser.parse(this.cookie);
+        const cookies = cookieParser.parse(this.cookie);
 
         if (!cookies.hasOwnProperty("crossSessionId")) {
             this.processIdentificationResult(0); // always treat connections without crossSessionId as guest-connections
