@@ -91,9 +91,9 @@ class UserConnection {
             return;
         }
         if (error != null) {
-            Glue.logger.error("Establishment::UserConnection: Websocket send error: " + error);
+            //Glue.logger.error("Establishment::UserConnection: Websocket send error: " + error);
             if (error == "Error: This socket has been ended by the other party" || error == "Error: not opened") {
-                Glue.logger.error("Establishment::UserConnection: Websocket force-close.");
+                // Glue.logger.error("Establishment::UserConnection: Websocket force-close.");
                 this.destroy();
             }
         }

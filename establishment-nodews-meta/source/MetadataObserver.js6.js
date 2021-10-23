@@ -26,6 +26,7 @@ class MetadataObserver {
 
         this.redisConnection.on("error", (err) => {
             Glue.logger.error("Establishment::MetadataObserver redis connection: " + err);
+            this.redisConnection = RedisConnectionPool.getSharedConnection(config.redis.address);
         });
     }
 
@@ -103,8 +104,7 @@ class MetadataObserver {
             Glue.logger.info("Establishment::MetadataObserver: done clearing per connection data");
             this.resetPart3(callback, errback);
         }, () => {
-            Glue.logger.critical("Establishment::MetadataObserver: error clearing " + this.connectionIdsSet + " set: " +
-                                 error);
+            Glue.logger.critical("Establishment::MetadataObserver: error clearing " + this.connectionIdsSet + " set: " + error);
             errback();
         });
     }
@@ -143,7 +143,8 @@ class MetadataObserver {
         }
         this.redisConnection.hset(this.connectionIdToDataPrefix + connectionId, name, value, (error, reply) => {
             if (error != null) {
-                Glue.logger.error("Establishment::MetadataObserver: error setting hash field: " + error);
+                // Most likely we lost the connection to redis, reseting it
+                this.redisConnection = RedisConnectionPool.getSharedConnection(config.redis.address);
             }
         });
     }
@@ -156,8 +157,7 @@ class MetadataObserver {
         if (userId == 0) {
             this.redisConnection.incr(this.guestConnectionsKey, (error, reply) => {
                 if (error != null) {
-                    Glue.logger.error("Establishment::MetadataObserver: error increasing guest connection counter: " +
-                                      error);
+                    this.redisConnection = RedisConnectionPool.getSharedConnection(config.redis.address);
                     return;
                 }
                 this.guestConnectionCounter = reply;
