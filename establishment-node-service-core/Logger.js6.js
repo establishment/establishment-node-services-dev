@@ -1,4 +1,4 @@
-const {Util} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {Util} = require("../establishment-node-core/source/EntryPoint.js6.js");
 
 const RedisStreamPublisher = require("./RedisStreamPublisher.js6.js");
 

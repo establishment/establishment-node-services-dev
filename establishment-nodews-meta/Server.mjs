@@ -1,7 +1,7 @@
 import fs from "fs";
 
 import {GCScheduler} from "../establishment-node-core/source/EntryPoint.js6.js";
-import {Glue, RPCServer, Util} from "../establishment-node-service-core/source/EntryPoint.js6.js";
+import {Glue, RPCServer, Util} from "../establishment-node-service-core/EntryPoint.js6.js";
 
 import MetadataServer from "./MetadataServer.mjs";
 import {LoadDefaultConfig} from "./DefaultConfig.mjs";

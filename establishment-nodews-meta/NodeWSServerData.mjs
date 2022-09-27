@@ -1,4 +1,4 @@
-import {Glue} from "../establishment-node-service-core/source/EntryPoint.js6.js";
+import {Glue} from "../establishment-node-service-core/EntryPoint.js6.js";
 
 export default class NodeWSServerData {
     constructor(metadataObserver) {
