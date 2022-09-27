@@ -5,7 +5,7 @@ import Status from "./Status.mjs";
 import * as Glue from "./Glue.mjs";
 import RPCServer from "./RPCServer.mjs";
 import UniqueIdentifierFactory from "./UniqueIdentifierFactory.mjs";
-import RedisStreamPublisher from "./RedisStreamPublisher.js6.js";
+import RedisStreamPublisher from "./RedisStreamPublisher.mjs";
 import MetadataObserver from "./MetadataObserver.mjs";
 
 export {

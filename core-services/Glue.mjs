@@ -2,7 +2,7 @@ import fs from "fs";
 import {dirname} from "path";
 
 import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
-import Logger from "./Logger.js6.js";
+import Logger from "./Logger.mjs";
 import RegistryKeeper from "./RegistryKeeper.mjs";
 import Status from "./Status.mjs";
 import UniqueIdentifierFactory from "./UniqueIdentifierFactory.mjs";

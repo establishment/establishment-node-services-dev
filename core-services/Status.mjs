@@ -1,6 +1,6 @@
 import {Util} from "../core/EntryPoint.js6.js";
 
-import RedisStreamPublisher from "./RedisStreamPublisher.js6.js";
+import RedisStreamPublisher from "./RedisStreamPublisher.mjs";
 import {queryMachineId} from "./Util.mjs";
 
 export default class ServiceStatus {

@@ -1,8 +1,39 @@
-const {Util} = require("../core/EntryPoint.js6.js");
+import {Util} from "../core/EntryPoint.js6.js";
 
-const RedisStreamPublisher = require("./RedisStreamPublisher.js6.js");
+import RedisStreamPublisher from "./RedisStreamPublisher.mjs";
 
-class Logger {
+export default class Logger {
+    static Level = {
+        none: {
+            priority: 999
+        },
+        debug: {
+            priority: 0,
+            tag: "DEBUG",
+            printToConsole: false
+        },
+        info: {
+            priority: 1,
+            tag: "INFO",
+            printToConsole: false
+        },
+        warn: {
+            priority: 2,
+            tag: "WARN",
+            printToConsole: false
+        },
+        error: {
+            priority: 3,
+            tag: "ERROR",
+            printToConsole: true
+        },
+        critical: {
+            priority: 4,
+            tag: "CRITICAL",
+            printToConsole: true
+        }
+    };
+
     constructor(redisAddress, name, minLevel) {
         if (redisAddress != -1) {
             this.redisStreamPublisher = new RedisStreamPublisher(redisAddress, "global_logging");
@@ -92,37 +123,3 @@ class Logger {
         };
     }
 }
-
-Logger.Level = {
-    none: {
-        priority: 999
-    },
-    debug: {
-        priority: 0,
-        tag: "DEBUG",
-        printToConsole: false
-    },
-    info: {
-        priority: 1,
-        tag: "INFO",
-        printToConsole: false
-    },
-    warn: {
-        priority: 2,
-        tag: "WARN",
-        printToConsole: false
-    },
-    error: {
-        priority: 3,
-        tag: "ERROR",
-        printToConsole: true
-    },
-    critical: {
-        priority: 4,
-        tag: "CRITICAL",
-        printToConsole: true
-    }
-};
-
-
-module.exports = Logger;

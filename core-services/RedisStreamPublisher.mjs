@@ -1,12 +1,14 @@
-const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
+import  {RedisConnectionPool} from "../core/EntryPoint.js6.js";
 
-class RedisStreamPublisher {
+export default class RedisStreamPublisher {
+    static MESSAGE_TIMEOUT = 60 * 60 * 5;
+
     constructor(redisAddress, streamName) {
         this.redisClient = RedisConnectionPool.getSharedConnection(redisAddress);
         this.raw = false;
         this.persistence = true;
         this.streamName = streamName;
-        this.expireTime = RedisStreamPublisher.MESSAGE_TIMEOUT;
+        this.expireTime = this.constructor.MESSAGE_TIMEOUT;
     }
 
     setRaw(raw) {
@@ -56,7 +58,3 @@ class RedisStreamPublisher {
         return "v " + message;
     }
 }
-
-RedisStreamPublisher.MESSAGE_TIMEOUT = 60 * 60 * 5;
-
-module.exports = RedisStreamPublisher;

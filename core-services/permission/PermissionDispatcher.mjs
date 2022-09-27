@@ -1,5 +1,3 @@
-import * as Glue from "../Glue.mjs";
-
 export default class PermissionDispatcher {
     constructor() {
         this.identificationQueue = new Map();
