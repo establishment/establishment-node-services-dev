@@ -1,7 +1,7 @@
-import {RedisCache} from "../establishment-node-core/EntryPoint.js6.js";
+import {RedisCache} from "../core/EntryPoint.js6.js";
 import {
     MetadataObserver, UniqueIdentifierFactory, PermissionChecker, PermissionDispatcher
-} from "../establishment-node-service-core/EntryPoint.js6.js";
+} from "../core-service/EntryPoint.js6.js";
 
 import RedisDispatcher from "./RedisDispatcher.mjs";
 import UserConnection from "./UserConnection.mjs";

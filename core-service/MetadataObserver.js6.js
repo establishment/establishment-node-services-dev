@@ -1,4 +1,4 @@
-const {RedisConnectionPool} = require("../establishment-node-core/EntryPoint.js6.js");
+const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
 
 const Glue = require("./Glue.js6.js");
 

@@ -1,5 +1,5 @@
 const Glue = require('./Glue.js6.js');
-const {Queue, RedisConnectionPool} = require("../establishment-node-core/EntryPoint.js6.js");
+const {Queue, RedisConnectionPool} = require("../core/EntryPoint.js6.js");
 
 let factoryUID = 0;
 

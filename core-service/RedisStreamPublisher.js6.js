@@ -1,4 +1,4 @@
-const {RedisConnectionPool} = require("../establishment-node-core/EntryPoint.js6.js");
+const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
 
 class RedisStreamPublisher {
     constructor(redisAddress, streamName) {
