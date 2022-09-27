@@ -7,7 +7,7 @@ import WebsocketServer from "./WebsocketServer.mjs";
 import UserConnection from "./UserConnection.mjs";
 import {LoadDefaultConfig} from "./DefaultConfig.mjs";
 
-export function run(params) {
+export function RunServer(params) {
     let config = null;
     if (params) {
         if (params.hasOwnProperty("config") && params.config != null) {

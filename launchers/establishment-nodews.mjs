@@ -1,5 +1,5 @@
-import EstablishmentNodeWS from "../establishment-nodews/EntryPoint.mjs";
+import {RunServer} from "../establishment-nodews/Server.mjs";
 
-EstablishmentNodeWS.Server.run({
+RunServer({
     "configFilePath": process.argv[2]
 });
