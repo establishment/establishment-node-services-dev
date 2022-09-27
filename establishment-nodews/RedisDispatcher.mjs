@@ -1,5 +1,5 @@
-import {RedisConnectionPool} from "../../establishment-node-core/source/EntryPoint.js6.js";
-import {Glue} from "../../establishment-node-service-core/source/EntryPoint.js6.js";
+import {RedisConnectionPool} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue} from "../establishment-node-service-core/source/EntryPoint.js6.js";
 
 export default class RedisDispatcher {
     constructor(config) {
