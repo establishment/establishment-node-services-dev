@@ -1,13 +1,13 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
 
-const {Glue, RPCServer, Util} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
-const {GCScheduler} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+import {Glue, RPCServer, Util} from "../establishment-node-service-core/source/EntryPoint.js6.js";
+import {GCScheduler} from "../establishment-node-core/source/EntryPoint.js6.js";
 
-const ServiceEmulator = require("./ServiceEmulator.js6.js");
-const DefaultConfig = require("./DefaultConfig.js6.js");
+import ServiceEmulator from "./ServiceEmulator.mjs";
+import {LoadDefaultConfig} from "./DefaultConfig.mjs";
 
-module.exports.run = (params) => {
+export function RunServer(params) {
+    // TODO @branch fucking merge this logic
     let config = null;
     if (params) {
         if (params.hasOwnProperty("config") && params.config != null) {
@@ -18,7 +18,7 @@ module.exports.run = (params) => {
     }
 
     if (!config) {
-        config = DefaultConfig();
+        config = LoadDefaultConfig();
     }
 
     Util.setMockMachineId(config.machineId.mockId);
@@ -40,4 +40,4 @@ module.exports.run = (params) => {
 
     let serviceEmulator = new ServiceEmulator(config.server);
     serviceEmulator.start();
-};
+}

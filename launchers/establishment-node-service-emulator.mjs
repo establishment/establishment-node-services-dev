@@ -1,5 +1,5 @@
-import EstablishmentNodeServiceEmulator from "../establishment-node-service-emulator/source/EntryPoint.js6.js";
+import {RunServer} from "../establishment-node-service-emulator/Server.mjs";
 
-EstablishmentNodeServiceEmulator.Server.run({
+RunServer({
     "configFilePath": process.argv[2]
 });

@@ -1,9 +1,9 @@
-const netstat = require("node-netstat");
+import netstat from "node-netstat";
 
-const {MathEx} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue, Status} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {MathEx} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue, Status} from "../establishment-node-service-core/source/EntryPoint.js6.js";
 
-class ServiceEmulator {
+export default class ServiceEmulator {
     constructor(config) {
         this.config = config;
 
@@ -233,5 +233,3 @@ class ServiceEmulator {
         this.netstatEntries = null;
     }
 }
-
-module.exports = ServiceEmulator;
