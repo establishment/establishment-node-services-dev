@@ -1,7 +1,7 @@
 import netstat from "node-netstat";
 
 import {MathEx} from "../core/EntryPoint.js6.js";
-import {Glue, Status} from "../core-service/EntryPoint.js6.js";
+import {Glue, Status} from "../core-services/EntryPoint.mjs";
 
 export default class ServiceEmulator {
     constructor(config) {

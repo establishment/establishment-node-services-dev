@@ -1,9 +1,9 @@
-const EventEmitter = require('events');
+import EventEmitter from "events";
 
-const Glue = require("../Glue.js6.js");
-const {RedisConnectionPool, RedisQueue} = require("../../core/EntryPoint.js6.js");
+import * as Glue from "../Glue.mjs";
+import {RedisConnectionPool, RedisQueue} from "../../core/EntryPoint.js6.js";
 
-class PermissionChecker extends EventEmitter {
+export default class PermissionChecker extends EventEmitter {
     constructor(config) {
         super();
         this.redisPermissionResponseStream = config.redis.permission.responseStream;
@@ -131,5 +131,3 @@ class PermissionChecker extends EventEmitter {
         });
     }
 }
-
-module.exports = PermissionChecker;

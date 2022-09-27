@@ -1,9 +1,10 @@
-const EventEmitter = require('events');
-const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
+import EventEmitter from "events";
+import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
 
-const Glue = require("./Glue.js6.js");
+import * as Glue from "./Glue.mjs";
 
-class RPCServer extends EventEmitter {
+// TODO extend Dispatcher, you fucking idiot
+export default class RPCServer extends EventEmitter {
     constructor(config) {
         super();
         this.config = config;
@@ -62,5 +63,3 @@ class RPCServer extends EventEmitter {
         this.redisClient.publish(this.redisOutputStream, message);
     }
 }
-
-module.exports = RPCServer;

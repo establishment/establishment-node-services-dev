@@ -1,7 +1,8 @@
 import fs from "fs";
 
 import {GCScheduler} from "../core/EntryPoint.js6.js";
-import {Glue, RPCServer, Util} from "../core-service/EntryPoint.js6.js";
+import {Glue, RPCServer} from "../core-services/EntryPoint.mjs";
+import {setMachineIdScript, setMockMachineId} from "../core-services/Util.mjs";
 
 import WebsocketServer from "./WebsocketServer.mjs";
 import UserConnection from "./UserConnection.mjs";
@@ -21,8 +22,8 @@ export function RunServer(params) {
         config = LoadDefaultConfig();
     }
 
-    Util.setMockMachineId(config.machineId.mockId);
-    Util.setMachineIdScript(config.machineId.script);
+    setMockMachineId(config.machineId.mockId);
+    setMachineIdScript(config.machineId.script);
     Glue.initLogger(config.logging);
     Glue.initRegistryKeeper(config.registryKeeper);
     Glue.initService(config.service);

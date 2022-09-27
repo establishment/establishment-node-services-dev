@@ -1,7 +1,4 @@
-class PermissionReceiver {
-    constructor() {
-    }
-
+export default class PermissionReceiver {
     getSession() {
         return null;
     }
@@ -16,5 +13,3 @@ class PermissionReceiver {
     processPermissionResult(channel, canRegister, reason) {
     }
 }
-
-module.exports = PermissionReceiver;

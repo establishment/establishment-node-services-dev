@@ -1,8 +1,8 @@
-const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
+import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
 
-const Glue = require("./Glue.js6.js");
+import * as Glue from "./Glue.mjs";
 
-class MetadataObserver {
+export default class MetadataObserver {
     constructor(config) {
         this.redisConnection = RedisConnectionPool.getSharedConnection(config.redis.address);
 
@@ -33,5 +33,3 @@ class MetadataObserver {
         return this.guestConnectionCounter;
     }
 }
-
-module.exports = MetadataObserver;

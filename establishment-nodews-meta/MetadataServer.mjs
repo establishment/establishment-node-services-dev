@@ -1,5 +1,5 @@
 import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
-import {Glue, UniqueIdentifierFactory} from "../core-service/EntryPoint.js6.js";
+import {Glue, UniqueIdentifierFactory} from "../core-services/EntryPoint.mjs";
 
 import MetadataObserver from "./MetadataObserver.mjs";
 import NodeWSServerData from "./NodeWSServerData.mjs";

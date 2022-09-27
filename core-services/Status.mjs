@@ -1,9 +1,9 @@
-const {Util} = require("../core/EntryPoint.js6.js");
+import {Util} from "../core/EntryPoint.js6.js";
 
-const RedisStreamPublisher = require("./RedisStreamPublisher.js6.js");
-const ServiceUtil = require("./Util.js6.js");
+import RedisStreamPublisher from "./RedisStreamPublisher.js6.js";
+import {queryMachineId} from "./Util.mjs";
 
-class ServiceStatus {
+export default class ServiceStatus {
     constructor(config) {
         this.streamPublisher = new RedisStreamPublisher(config.redis.address, "service_status");
         this.streamPublisher.setPersistence(false);
@@ -63,7 +63,7 @@ class ServiceStatus {
     }
 
     start() {
-        ServiceUtil.queryMachineId((id) => {
+        queryMachineId((id) => {
             this.machineId = id;
             this.startPhase2();
         });
@@ -98,5 +98,3 @@ class ServiceStatus {
         this.initTime = null;
     }
 }
-
-module.exports = ServiceStatus;

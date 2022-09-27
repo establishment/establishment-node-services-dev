@@ -1,8 +1,8 @@
-const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
+import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
 
-const Glue = require("./Glue.js6.js");
+import * as Glue from "./Glue.mjs";
 
-class RegistryKeeper {
+export default class RegistryKeeper {
     constructor(config) {
         this.redisPrefix = config.redis.prefix;
         this.redisStream = config.redis.stream;
@@ -71,5 +71,3 @@ class RegistryKeeper {
         };
     }
 }
-
-module.exports = RegistryKeeper;

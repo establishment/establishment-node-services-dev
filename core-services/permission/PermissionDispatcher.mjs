@@ -1,6 +1,6 @@
-const Glue = require("../Glue.js6.js");
+import * as Glue from "../Glue.mjs";
 
-class PermissionDispatcher {
+export default class PermissionDispatcher {
     constructor() {
         this.identificationQueue = new Map();
         this.permissionQueue = new Map();
@@ -170,5 +170,3 @@ class PermissionDispatcher {
         }
     }
 }
-
-module.exports = PermissionDispatcher;

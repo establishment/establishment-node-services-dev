@@ -1,9 +1,9 @@
-const Glue = require('./Glue.js6.js');
-const {Queue, RedisConnectionPool} = require("../core/EntryPoint.js6.js");
+import * as Glue from "./Glue.mjs";
+import {Queue, RedisConnectionPool} from "../core/EntryPoint.js6.js";
 
 let factoryUID = 0;
 
-class UniqueIdentifierFactory {
+export default class UniqueIdentifierFactory {
     constructor(config) {
         this.redisClient = RedisConnectionPool.getSharedConnection(config.redis.address);
         this.uidRedisKeyPrefix = config.redis.prefix;
@@ -43,5 +43,3 @@ class UniqueIdentifierFactory {
         this.uidRequestQueue = null;
     }
 }
-
-module.exports = UniqueIdentifierFactory;

@@ -1,39 +1,39 @@
-const fs = require("fs");
-const {dirname} = require("path");
+import fs from "fs";
+import {dirname} from "path";
 
-const {RedisConnectionPool} = require("../core/EntryPoint.js6.js");
-const Logger = require("./Logger.js6.js");
-const RegistryKeeper = require("./RegistryKeeper.js6.js");
-const Status = require("./Status.js6.js");
-const UniqueIdentifierFactory = require("./UniqueIdentifierFactory.js6.js");
+import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
+import Logger from "./Logger.js6.js";
+import RegistryKeeper from "./RegistryKeeper.mjs";
+import Status from "./Status.mjs";
+import UniqueIdentifierFactory from "./UniqueIdentifierFactory.mjs";
 
-module.exports.logger = Logger.getDummyAPI();
-module.exports.registryKeeper = RegistryKeeper.getDummyAPI();
-module.exports.rpcId = null;
-module.exports.serviceInstanceId = null;
-module.exports.name = null;
-module.exports.serviceStatus = null;
+export let logger = Logger.getDummyAPI();
+export let registryKeeper = RegistryKeeper.getDummyAPI();
+export let rpcId = null;
+export let serviceInstanceId = null;
+export let name = null;
+export let serviceStatus = null;
 
 let serviceInstanceUidFactory = null;
 
-module.exports.initLogger = (config) => {
-    if (module.exports.logger.hasOwnProperty("isDummy")) {
-        module.exports.logger = new Logger(config.redisAddress, config.name, Logger.getLevel(config.level));
+export function initLogger(config) {
+    if (logger.hasOwnProperty("isDummy")) {
+        logger = new Logger(config.redisAddress, config.name, Logger.getLevel(config.level));
     }
-};
+}
 
-module.exports.initRegistryKeeper = (config) => {
-    if (module.exports.registryKeeper.hasOwnProperty("isDummy")) {
-        module.exports.registryKeeper = new RegistryKeeper(config);
+export function initRegistryKeeper (config) {
+    if (registryKeeper.hasOwnProperty("isDummy")) {
+        registryKeeper = new RegistryKeeper(config);
     }
-};
+}
 
-module.exports.initService = (config) => {
+export function initService(config) {
     if (!config.hasOwnProperty("name")) {
         console.log("ServiceGlue::initService failed to setup: missing field \"name\"");
         return;
     }
-    module.exports.setName(config.name);
+    setName(config.name);
     if (config.hasOwnProperty("status")) {
         let statusServiceConfig = {
             "name": config.name,
@@ -41,7 +41,7 @@ module.exports.initService = (config) => {
                 "address": config.status.redis.address
             }
         };
-        module.exports.initServiceStatus(statusServiceConfig);
+        initServiceStatus(statusServiceConfig);
     }
     if (config.hasOwnProperty("instanceId")) {
         let uidFactoryConfig = {
@@ -52,7 +52,7 @@ module.exports.initService = (config) => {
         };
         serviceInstanceUidFactory = new UniqueIdentifierFactory(uidFactoryConfig);
         serviceInstanceUidFactory.requestUID((id) => {
-            module.exports.serviceInstanceId = id;
+            serviceInstanceId = id;
             if (config.instanceId.hasOwnProperty("path")) {
                 let path = config.instanceId.path;
                 path = path.replace("$SERVICE_NAME", config.name);
@@ -72,21 +72,21 @@ module.exports.initService = (config) => {
             serviceInstanceUidFactory = null;
         });
     }
-};
+}
 
-module.exports.initServiceStatus = (config) => {
-    if (module.exports.serviceStatus == null) {
-        module.exports.serviceStatus = new Status(config);
-        module.exports.serviceStatus.start();
+export function initServiceStatus(config) {
+    if (serviceStatus == null) {
+        serviceStatus = new Status(config);
+        serviceStatus.start();
     }
-};
+}
 
-module.exports.setName = (name) => {
-    module.exports.rpcId = name;
-    module.exports.name = name;
-};
+export function setName(name) {
+    rpcId = name;
+    name = name;
+}
 
-module.exports.stop = (params, rpcCallback) => {
+export function stop(params, rpcCallback) {
     let validRequest = true;
 
     if (params.hasOwnProperty("serviceInstanceId") && module.exports.serviceInstanceId != null) {
@@ -104,9 +104,9 @@ module.exports.stop = (params, rpcCallback) => {
         return;
     }
 
-    if (module.exports.serviceStatus != null) {
-        module.exports.serviceStatus.destroy();
-        module.exports.serviceStatus = null;
+    if (serviceStatus != null) {
+        serviceStatus.destroy();
+        serviceStatus = null;
     }
 
     if (serviceInstanceUidFactory != null) {
@@ -117,4 +117,4 @@ module.exports.stop = (params, rpcCallback) => {
     rpcCallback("Establishment::Glue::stop: Exit from process with rpcId " + module.exports.rpcId);
     RedisConnectionPool.quit();
     process.exit();
-};
+}
