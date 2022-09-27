@@ -1,6 +1,6 @@
-const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {Glue} from "../establishment-node-service-core/source/EntryPoint.js6.js";
 
-class NodeWSServerData {
+export default class NodeWSServerData {
     constructor(metadataObserver) {
         this.metadataObserver = metadataObserver;
 
@@ -80,5 +80,3 @@ class NodeWSServerData {
         this.userConnection = null;
     }
 }
-
-module.exports = NodeWSServerData;

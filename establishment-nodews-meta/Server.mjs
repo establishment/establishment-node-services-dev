@@ -1,13 +1,12 @@
-const fs = require("fs");
-const path = require("path");
+import fs from "fs";
 
-const {GCScheduler} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue, RPCServer, Util} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {GCScheduler} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue, RPCServer, Util} from "../establishment-node-service-core/source/EntryPoint.js6.js";
 
-const MetadataServer = require("./MetadataServer.js6.js");
-const DefaultConfig = require("./DefaultConfig.js6.js");
+import MetadataServer from "./MetadataServer.mjs";
+import {LoadDefaultConfig} from "./DefaultConfig.mjs";
 
-module.exports.run = (params) => {
+export function RunServer(params) {
     let config = null;
     if (params) {
         if (params.hasOwnProperty("config") && params.config != null) {
@@ -18,7 +17,7 @@ module.exports.run = (params) => {
     }
 
     if (!config) {
-        config = DefaultConfig();
+        config = LoadDefaultConfig();
     }
 
     Util.setMockMachineId(config.machineId.mockId);
@@ -31,13 +30,13 @@ module.exports.run = (params) => {
     GCScheduler.setLogger(Glue.logger);
     GCScheduler.start();
 
-    let rpcServer = new RPCServer(config.rpcServer);
+    const rpcServer = new RPCServer(config.rpcServer);
     rpcServer.start();
 
     rpcServer.on("stop", (params, rpcCallback) => {
         Glue.stop(params, rpcCallback);
     });
 
-    let metadataServer = new MetadataServer(config.server);
+    const metadataServer = new MetadataServer(config.server);
     metadataServer.start();
-};
+}

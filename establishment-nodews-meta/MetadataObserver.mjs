@@ -1,7 +1,7 @@
-const {RedisConnectionPool, RedisQueue} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {RedisConnectionPool, RedisQueue} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue} from "../establishment-node-service-core/source/EntryPoint.js6.js";
 
-class MetadataObserver {
+export default class MetadataObserver {
     constructor(config) {
         this.redisConnection = RedisConnectionPool.getSharedConnection(config.redis.address);
 
@@ -333,5 +333,3 @@ class MetadataObserver {
         };
     }
 }
-
-module.exports = MetadataObserver;

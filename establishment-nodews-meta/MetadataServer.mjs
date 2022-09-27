@@ -1,10 +1,16 @@
-const {RedisConnectionPool} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue, UniqueIdentifierFactory} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {RedisConnectionPool} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue, UniqueIdentifierFactory} from "../establishment-node-service-core/source/EntryPoint.js6.js";
 
-const MetadataObserver = require("./MetadataObserver.js6.js");
-const NodeWSServerData = require("./NodeWSServerData.js6.js");
+import MetadataObserver from "./MetadataObserver.mjs";
+import NodeWSServerData from "./NodeWSServerData.mjs";
 
-class MetadataServer {
+export default class MetadataServer {
+    static KEEPALIVE_PHASE = {
+        WAIT_FOR_NORMAL_KEEPALIVE: 0,
+        WAIT_FOR_REQUESTED_KEEPALIVE: 1
+    };
+
+
     constructor(config) {
         this.config = config;
         this.redisSubscriber = RedisConnectionPool.getConnection(config.metadataBridge.redis.address);
@@ -392,10 +398,3 @@ class MetadataServer {
         return message;
     }
 }
-
-MetadataServer.KEEPALIVE_PHASE = {
-    WAIT_FOR_NORMAL_KEEPALIVE: 0,
-    WAIT_FOR_REQUESTED_KEEPALIVE: 1
-};
-
-module.exports = MetadataServer;

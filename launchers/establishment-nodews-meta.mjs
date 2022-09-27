@@ -1,5 +1,5 @@
-import EstablishmentNodeWSMeta from "../establishment-nodews-meta/source/EntryPoint.js6.js";
+import {RunServer} from "../establishment-nodews-meta/Server.mjs";
 
-EstablishmentNodeWSMeta.Server.run({
+RunServer({
     "configFilePath": process.argv[2]
 });
