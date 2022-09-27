@@ -18,7 +18,7 @@
     "proxy"
   ],
   "scripts": {
-    "ws-server": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 launchers/establishment-nodews.js"
+    "ws-server": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 launchers/establishment-nodews.mjs"
   },
   "repository": {
     "type": "git",

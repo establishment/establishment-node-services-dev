@@ -1,13 +1,13 @@
-const fs = require("fs");
+import fs from "fs";
 
-const {GCScheduler} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue, RPCServer, Util} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {GCScheduler} from "../../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue, RPCServer, Util} from "../../establishment-node-service-core/source/EntryPoint.js6.js";
 
-const WebsocketServer = require("./WebsocketServer.js6.js");
-const UserConnection = require("./UserConnection.js6.js");
-const DefaultConfig = require("./DefaultConfig.js6.js");
+import WebsocketServer from "./WebsocketServer.mjs";
+import UserConnection from "./UserConnection.mjs";
+import {LoadDefaultConfig} from "./DefaultConfig.mjs";
 
-module.exports.run = (params) => {
+export function run(params) {
     let config = null;
     if (params) {
         if (params.hasOwnProperty("config") && params.config != null) {
@@ -18,7 +18,7 @@ module.exports.run = (params) => {
     }
 
     if (!config) {
-        config = DefaultConfig();
+        config = LoadDefaultConfig();
     }
 
     Util.setMockMachineId(config.machineId.mockId);
@@ -102,4 +102,4 @@ module.exports.run = (params) => {
 
     let websocketServer = new WebsocketServer(config.server);
     websocketServer.start();
-};
+}

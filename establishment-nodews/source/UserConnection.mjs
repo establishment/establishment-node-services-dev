@@ -1,11 +1,11 @@
-const cookieParser = require("cookie");
+import cookieParser from "cookie";
 
-const {RedisConnectionPool, Queue, Util, MathEx} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue, RedisStreamPublisher} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {RedisConnectionPool, Queue, Util, MathEx} from "../../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue, RedisStreamPublisher} from "../../establishment-node-service-core/source/EntryPoint.js6.js";
 
 let uidToUserConnection = new Map();
 
-class UserConnection {
+export default class UserConnection {
     constructor(config, webSocket, redisDispatcher, uidFactory, permissionChecker, metadataObserver, metadataBridge, redisCache, permissionDispatcher) {
         this.heartbeatMessage = config.heartbeat.message;
         this.heartbeatIntervalMin = config.heartbeat.interval.min;
@@ -366,5 +366,3 @@ class UserConnection {
         return -1;
     }
 }
-
-module.exports = UserConnection;

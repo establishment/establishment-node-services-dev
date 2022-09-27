@@ -1,14 +1,15 @@
-const {RedisCache} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {MetadataObserver, UniqueIdentifierFactory, PermissionChecker,
-       PermissionDispatcher} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {RedisCache} from "../../establishment-node-core/source/EntryPoint.js6.js";
+import {
+    MetadataObserver, UniqueIdentifierFactory, PermissionChecker, PermissionDispatcher
+} from "../../establishment-node-service-core/source/EntryPoint.js6.js";
 
-const RedisDispatcher = require("./RedisDispatcher.js6.js");
-const UserConnection = require("./UserConnection.js6.js");
-const MetadataBridge = require("./MetadataBridge.js6.js");
+import RedisDispatcher from "./RedisDispatcher.mjs";
+import UserConnection from "./UserConnection.mjs";
+import MetadataBridge from "./MetadataBridge.mjs";
 
-const WebSocketServer = require("ws").Server;
+import ws from "ws";
 
-class WebsocketServer {
+export default class WebsocketServer {
     constructor(config) {
         this.config = config;
         this.redisDispatcher = new RedisDispatcher(config.redisDispatcher);
@@ -27,7 +28,7 @@ class WebsocketServer {
     start() {
         console.log("Starting WebSocketServer", this.config.listen);
 
-        this.webSocketServer = new WebSocketServer(this.config.listen);
+        this.webSocketServer = new ws.Server(this.config.listen);
 
         this.run();
     }
@@ -41,5 +42,3 @@ class WebsocketServer {
         });
     }
 }
-
-module.exports = WebsocketServer;

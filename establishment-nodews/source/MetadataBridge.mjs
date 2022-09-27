@@ -1,7 +1,7 @@
-const {RedisConnectionPool, Queue} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {RedisConnectionPool, Queue} from "../../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue} from "../../establishment-node-service-core/source/EntryPoint.js6.js";
 
-class MetadataBridge {
+export default class MetadataBridge {
     constructor(config, uidFactory) {
         this.config = config;
         this.redisPublisher = RedisConnectionPool.getSharedConnection(config.redis.address);
@@ -276,5 +276,3 @@ class MetadataBridge {
         this.sendMessage(message);
     }
 }
-
-module.exports = MetadataBridge;

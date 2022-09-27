@@ -1,7 +1,7 @@
-const {RedisConnectionPool} = require("../../establishment-node-core/source/EntryPoint.js6.js");
-const {Glue} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
+import {RedisConnectionPool} from "../../establishment-node-core/source/EntryPoint.js6.js";
+import {Glue} from "../../establishment-node-service-core/source/EntryPoint.js6.js";
 
-class RedisDispatcher {
+export default class RedisDispatcher {
     constructor(config) {
         this.config = config;
         this.redisClient = RedisConnectionPool.getConnection(config.redis);
@@ -168,4 +168,3 @@ class RedisDispatcher {
 
 RedisDispatcher.prototype.defaultRawMessageHandler = RedisDispatcher.prototype.rawMessageHandlerError;
 
-module.exports = RedisDispatcher;
