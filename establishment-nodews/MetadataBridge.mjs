@@ -1,5 +1,7 @@
-import {RedisConnectionPool, Queue} from "../core/EntryPoint.js6.js";
+import {Queue} from "../core/EntryPoint.mjs";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
+
 
 export default class MetadataBridge {
     constructor(config, uidFactory) {

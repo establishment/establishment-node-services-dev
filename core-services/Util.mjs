@@ -1,4 +1,4 @@
-import {Util} from "../core/EntryPoint.js6.js";
+import {Util} from "../core/EntryPoint.mjs";
 
 import * as Glue from "./Glue.mjs";
 

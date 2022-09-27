@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import {GCScheduler} from "../core/EntryPoint.js6.js";
+import {GCScheduler} from "../core/EntryPoint.mjs";
 import {Glue, RPCServer} from "../core-services/EntryPoint.mjs";
 import {setMachineIdScript, setMockMachineId} from "../core-services/Util.mjs";
 

@@ -1,6 +1,6 @@
-const RedisConnectionPool = require("./RedisConnectionPool.js6.js");
+import {RedisConnectionPool} from "./RedisConnectionPool.mjs";
 
-class RedisQueue {
+export default class RedisQueue {
     constructor(queueName, redisAddress, maxQueueSize = 16 * 1024) {
         this.maxQueueSize = maxQueueSize;
         this.queueName = queueName;
@@ -30,5 +30,3 @@ class RedisQueue {
         });
     }
 }
-
-module.exports = RedisQueue;

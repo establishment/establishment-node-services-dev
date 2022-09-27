@@ -1,7 +1,7 @@
 import fs from "fs";
 import {dirname} from "path";
 
-import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 import Logger from "./Logger.mjs";
 import RegistryKeeper from "./RegistryKeeper.mjs";
 import Status from "./Status.mjs";

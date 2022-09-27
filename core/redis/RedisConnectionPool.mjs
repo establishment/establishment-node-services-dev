@@ -1,9 +1,9 @@
-let redis = require("redis");
+import redis from "redis";
 
 let redisConnectionPool = new Map();
 let redisSharedConnectionPool = new Map();
 
-class RedisConnectionPool {
+export class RedisConnectionPool {
     constructor() {
     }
 
@@ -40,5 +40,3 @@ class RedisConnectionPool {
         }
     }
 }
-
-module.exports = RedisConnectionPool;

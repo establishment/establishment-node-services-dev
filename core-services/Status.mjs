@@ -1,4 +1,4 @@
-import {Util} from "../core/EntryPoint.js6.js";
+import {Util} from "../core/EntryPoint.mjs";
 
 import RedisStreamPublisher from "./RedisStreamPublisher.mjs";
 import {queryMachineId} from "./Util.mjs";

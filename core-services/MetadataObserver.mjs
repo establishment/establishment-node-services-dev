@@ -1,4 +1,4 @@
-import {RedisConnectionPool} from "../core/EntryPoint.js6.js";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
 import * as Glue from "./Glue.mjs";
 

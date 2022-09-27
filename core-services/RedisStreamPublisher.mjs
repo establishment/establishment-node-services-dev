@@ -1,4 +1,4 @@
-import  {RedisConnectionPool} from "../core/EntryPoint.js6.js";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
 export default class RedisStreamPublisher {
     static MESSAGE_TIMEOUT = 60 * 60 * 5;

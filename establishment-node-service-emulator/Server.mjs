@@ -2,7 +2,7 @@ import fs from "fs";
 
 import {Glue, RPCServer} from "../core-services/EntryPoint.mjs";
 import {setMockMachineId, setMachineIdScript} from "../core-services/Util.mjs";
-import {GCScheduler} from "../core/EntryPoint.js6.js";
+import {GCScheduler} from "../core/EntryPoint.mjs";
 
 import ServiceEmulator from "./ServiceEmulator.mjs";
 import {LoadDefaultConfig} from "./DefaultConfig.mjs";

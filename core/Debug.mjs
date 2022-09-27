@@ -1,13 +1,14 @@
-module.exports.init = function () {
+// TODO this file seems to not be used anymore
+export function init() {
     Object.defineProperty(global, '__stack', {
         get: function () {
-            var orig = Error.prepareStackTrace;
+            const orig = Error.prepareStackTrace;
             Error.prepareStackTrace = function (_, stack) {
                 return stack;
             };
-            var err = new Error;
+            const err = new Error;
             Error.captureStackTrace(err, arguments.callee);
-            var stack = err.stack;
+            const stack = err.stack;
             Error.prepareStackTrace = orig;
             return stack;
         }
@@ -18,4 +19,4 @@ module.exports.init = function () {
             return __stack[1].getLineNumber();
         }
     });
-};
+}
