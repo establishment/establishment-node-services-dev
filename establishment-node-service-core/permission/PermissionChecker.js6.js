@@ -1,7 +1,7 @@
 const EventEmitter = require('events');
 
 const Glue = require("../Glue.js6.js");
-const {RedisConnectionPool, RedisQueue} = require("../../establishment-node-core/source/EntryPoint.js6.js");
+const {RedisConnectionPool, RedisQueue} = require("../../establishment-node-core/EntryPoint.js6.js");
 
 class PermissionChecker extends EventEmitter {
     constructor(config) {

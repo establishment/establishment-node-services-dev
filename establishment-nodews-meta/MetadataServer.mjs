@@ -1,4 +1,4 @@
-import {RedisConnectionPool} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {RedisConnectionPool} from "../establishment-node-core/EntryPoint.js6.js";
 import {Glue, UniqueIdentifierFactory} from "../establishment-node-service-core/EntryPoint.js6.js";
 
 import MetadataObserver from "./MetadataObserver.mjs";

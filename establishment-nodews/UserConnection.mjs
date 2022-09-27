@@ -1,6 +1,6 @@
 import cookieParser from "cookie";
 
-import {RedisConnectionPool, Queue, Util, MathEx} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {RedisConnectionPool, Queue, Util, MathEx} from "../establishment-node-core/EntryPoint.js6.js";
 import {Glue, RedisStreamPublisher} from "../establishment-node-service-core/EntryPoint.js6.js";
 
 let uidToUserConnection = new Map();

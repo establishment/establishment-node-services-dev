@@ -1,5 +1,5 @@
 const EventEmitter = require('events');
-const {RedisConnectionPool} = require("../establishment-node-core/source/EntryPoint.js6.js");
+const {RedisConnectionPool} = require("../establishment-node-core/EntryPoint.js6.js");
 
 const Glue = require("./Glue.js6.js");
 

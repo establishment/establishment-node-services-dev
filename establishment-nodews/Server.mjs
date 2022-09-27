@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import {GCScheduler} from "../establishment-node-core/source/EntryPoint.js6.js";
+import {GCScheduler} from "../establishment-node-core/EntryPoint.js6.js";
 import {Glue, RPCServer, Util} from "../establishment-node-service-core/EntryPoint.js6.js";
 
 import WebsocketServer from "./WebsocketServer.mjs";
