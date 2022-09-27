@@ -6,8 +6,7 @@ const {Glue, RedisStreamPublisher} = require("../../establishment-node-service-c
 let uidToUserConnection = new Map();
 
 class UserConnection {
-    constructor(config, webSocket, redisDispatcher, uidFactory, permissionChecker, metadataObserver, metadataBridge,
-                redisCache, permissionDispatcher) {
+    constructor(config, webSocket, redisDispatcher, uidFactory, permissionChecker, metadataObserver, metadataBridge, redisCache, permissionDispatcher) {
         this.heartbeatMessage = config.heartbeat.message;
         this.heartbeatIntervalMin = config.heartbeat.interval.min;
         this.heartbeatIntervalMax = config.heartbeat.interval.max;
@@ -165,8 +164,7 @@ class UserConnection {
         ++index;
         this.redisConnection.get(RedisStreamPublisher.getStreamIdCounter(channel), (error, reply) => {
             if (error != null) {
-                Glue.logger.error("Establishment::UserConnection: failed to get stream id counter for #" + channel +
-                                  " error: " + error);
+                Glue.logger.error("UserConnection: failed to get stream id counter for #" + channel + " error: " + error);
                 return;
             }
             if (this.webSocket == null) {
@@ -259,11 +257,9 @@ class UserConnection {
         uidToUserConnection.set(this.uid, this);
         this.metadataBridge.userConnectionNewEvent(this.uid);
         this.metadataBridge.userConnectionAddField(this.uid, "IP", this.ip);
-        this.metadataBridge.userConnectionAddField(this.uid, "userAgent",
-                                                   this.webSocket.upgradeReq.headers["user-agent"]);
+        this.metadataBridge.userConnectionAddField(this.uid, "userAgent", this.webSocket.upgradeReq.headers["user-agent"]);
         this.metadataBridge.userConnectionAddField(this.uid, "cookie", this.cookie);
-        this.metadataBridge.userConnectionAddField(this.uid, "acceptLanguage",
-                                                   this.webSocket.upgradeReq.headers["accept-language"]);
+        this.metadataBridge.userConnectionAddField(this.uid, "acceptLanguage", this.webSocket.upgradeReq.headers["accept-language"]);
         this.metadataBridge.userConnectionAddField(this.uid, "connectionTime", this.connectionTime);
 
         //Glue.logger.info("Establishment::UserConnection: " + this.ip + ": Assigned UID = " + this.uid);

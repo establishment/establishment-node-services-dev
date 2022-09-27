@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const {GCScheduler} = require("../../establishment-node-core/source/EntryPoint.js6.js");
 const {Glue, RPCServer, Util} = require("../../establishment-node-service-core/source/EntryPoint.js6.js");
