@@ -7,7 +7,7 @@ export function init() {
                 return stack;
             };
             const err = new Error;
-            Error.captureStackTrace(err, arguments.callee);
+            Error.captureStackTrace(err, arguments["callee"]);
             const stack = err.stack;
             Error.prepareStackTrace = orig;
             return stack;

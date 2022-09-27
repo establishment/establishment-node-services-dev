@@ -1,6 +1,7 @@
-const Stack = require('./Stack.js6.js');
+import Stack from "./Stack.mjs";
 
-module.exports = class Queue {
+// TODO import from Stem
+export default class Queue {
     constructor() {
         this.stack = new Stack();
         this.reverseStack = new Stack();

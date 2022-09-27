@@ -1,6 +1,6 @@
-const MathEx = require("./MathEx.js6.js");
+import * as MathEx from "./MathEx.mjs";
 
-var prettysize = require("prettysize");
+import prettysize from "prettysize"; // TODO @mustfix use formatter
 
 // NOTE: these are not the actual values, these are just the default ones.
 // Check the config passed to configure(), in this case Config.js6.js file.
@@ -14,7 +14,7 @@ var logger = {
     info: function(){}
 };
 
-module.exports.configure = (config) => {
+export function configure(config) {
     if (config.hasOwnProperty("initialTimeInterval")) {
         if (config.initialTimeInterval.hasOwnProperty("min")) {
             minTime = config.initialTimeInterval.min;
@@ -45,13 +45,13 @@ module.exports.configure = (config) => {
     if (config.hasOwnProperty("lowerLatency")) {
         maxLatency = config.maxLatency;
     }
-};
+}
 
-module.exports.setLogger = (loggerObject) => {
+export function setLogger(loggerObject) {
     logger = loggerObject;
-};
+}
 
-module.exports.start = () => {
+export function start() {
     if (!global.gc) {
         logger.error('GCScheduler: Garbage collection is not exposed!');
         return;
@@ -76,9 +76,8 @@ module.exports.start = () => {
         minTime = MathEx.linearInterpolation(lowerMinTime, upperMinTime, coefficient);
         maxTime = MathEx.linearInterpolation(lowerMaxTime, upperMaxTime, coefficient);
 
-        logger.info("GCScheduler: Resident memory: " + prettysize(memory.rss) +
-                    "   Heap total: " + prettysize(memory.heapTotal) + "   Heap used: " + prettysize(memory.heapUsed));
-        logger.info("GCScheduler: finished in " + gcTime  + " ms. Calibrating to new time interval (" + minTime + ", " + maxTime + ")");
-        module.exports.start();
+        logger.info("GCScheduler: Resident memory: " + prettysize(memory.rss) + "  Heap total: " + prettysize(memory.heapTotal) + "   Heap used: " + prettysize(memory.heapUsed));
+        logger.info("GCScheduler: finished in " + gcTime  + " ms.");
+        start();
     }, nextMiliSeconds);
-};
+}

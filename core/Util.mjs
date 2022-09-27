@@ -1,8 +1,8 @@
-const fs = require("fs");
-const os = require("os");
-const child_process = require("child_process");
+import fs from "fs";
+import os from "os";
+import child_process from "child_process";
 
-module.exports.getLocalIPs = () => {
+export function getLocalIPs() {
     let addressInfo, interfaceDetails;
     let localIPInfo = {};
 
@@ -29,10 +29,10 @@ module.exports.getLocalIPs = () => {
         }
     }
     return localIPInfo;
-};
+}
 
-module.exports.getNetworkAddress = () => {
-    let networkInterfaces = module.exports.getLocalIPs();
+export function getNetworkAddress() {
+    let networkInterfaces = getLocalIPs();
     let preferredOrder = ["eth0"];
     let foundLO = false;
     for (let networkInterface in networkInterfaces) {
@@ -59,19 +59,20 @@ module.exports.getNetworkAddress = () => {
         }
     }
     return "127.0.0.1";
-};
+}
 
-module.exports.getUnixTime = () => {
+export function getUnixTime() {
     return new Date().getTime() / 1000.0;
-};
+}
 
-module.exports.sleep = (time) => {
+// TODO Remove this or make async
+export function sleep(time) {
     let stop = new Date().getTime();
-    while(new Date().getTime() < stop + time) {
+    while (new Date().getTime() < stop + time) {
     }
-};
+}
 
-module.exports.copyFile = (source, destination, callback) => {
+export function copyFile(source, destination, callback) {
     let callbackCalled = false;
 
     let sourceDescriptor = fs.createReadStream(source);
@@ -95,25 +96,25 @@ module.exports.copyFile = (source, destination, callback) => {
             callbackCalled = true;
         }
     }
-};
+}
 
-module.exports.backupFile = (filename, callback) => {
+export function backupFile(filename, callback) {
     fs.stat(filename, (error, stat) => {
         if (error == null) {
             let newFilenameTokens = filename.split(".");
             newFilenameTokens.push(newFilenameTokens[newFilenameTokens.length - 1]);
-            newFilenameTokens[newFilenameTokens.length - 2] = module.exports.getUnixTime().toString();
-            module.exports.copyFile(filename, newFilenameTokens.join("."), callback);
+            newFilenameTokens[newFilenameTokens.length - 2] = getUnixTime().toString();
+            copyFile(filename, newFilenameTokens.join("."), callback);
         } else if (err.code == "ENOENT") {
             callback("Log file '" + filename + "' does not exists!");
         } else {
             callback(error);
         }
     });
-};
+}
 
-module.exports.execute = (command, callback) => {
+export function execute(command, callback) {
     child_process.exec(command, (error, stdout, stderr) => {
         callback(error, stdout, stderr);
     });
-};
+}
