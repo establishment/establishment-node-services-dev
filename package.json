@@ -20,7 +20,7 @@
   "scripts": {
     "service-emulator": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 launchers/establishment-node-service-emulator.mjs",
     "ws-meta": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 launchers/establishment-nodews-meta.mjs",
-    "ws-server": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 launchers/establishment-nodews.mjs"
+    "ws-server": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-ws/Launcher.mjs"
   },
   "repository": {
     "type": "git",
