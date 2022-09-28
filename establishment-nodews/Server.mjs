@@ -2,11 +2,11 @@ import fs from "fs";
 
 import {GCScheduler} from "../core/EntryPoint.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
-import RPCServer from "../core-services/RPCServer.mjs";
+import {RPCServer} from "../core-services/RPCServer.mjs";
 import {setMachineIdScript, setMockMachineId} from "../core-services/Util.mjs";
 
-import WebsocketServer from "./WebsocketServer.mjs";
-import UserConnection from "./UserConnection.mjs";
+import {WebsocketServer} from "./WebsocketServer.mjs";
+import {UserConnection} from "./UserConnection.mjs";
 import {LoadDefaultConfig} from "./DefaultConfig.mjs";
 
 export function RunServer(params) {

@@ -1,13 +1,14 @@
 import cookieParser from "cookie";
 
-import {Queue, Util, MathEx} from "../core/EntryPoint.mjs";
+import {Queue} from "../core/data-structures/Queue.mjs";
+import {Util, MathEx} from "../core/EntryPoint.mjs";
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import RedisStreamPublisher from "../core-services/RedisStreamPublisher.mjs";
+import {RedisStreamPublisher} from "../core-services/RedisStreamPublisher.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
 
 let uidToUserConnection = new Map();
 
-export default class UserConnection {
+export class UserConnection {
     constructor(config, webSocket, redisDispatcher, uidFactory, permissionChecker, metadataObserver, metadataBridge, redisCache, permissionDispatcher) {
         this.heartbeatMessage = config.heartbeat.message;
         this.heartbeatIntervalMin = config.heartbeat.interval.min;

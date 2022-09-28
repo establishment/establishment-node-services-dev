@@ -4,7 +4,7 @@ import * as Glue from "../Glue.mjs";
 import {RedisQueue} from "../../core/redis/RedisQueue.mjs";
 import {RedisConnectionPool} from "../../core/redis/RedisConnectionPool.mjs";
 
-export default class PermissionChecker extends EventEmitter {
+export class PermissionChecker extends EventEmitter {
     constructor(config) {
         super();
         this.redisPermissionResponseStream = config.redis.permission.responseStream;

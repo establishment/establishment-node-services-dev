@@ -4,7 +4,7 @@ import {MathEx} from "../core/EntryPoint.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
 import Status from "../core-services/Status.mjs";
 
-export default class ServiceEmulator {
+export class ServiceEmulator {
     constructor(config) {
         this.config = config;
 

@@ -2,17 +2,16 @@ import fs from "fs";
 import {dirname} from "path";
 
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import Logger from "./Logger.mjs";
-import RegistryKeeper from "./RegistryKeeper.mjs";
-import Status from "./Status.mjs";
-import UniqueIdentifierFactory from "./UniqueIdentifierFactory.mjs";
+import {Logger} from "./Logger.mjs";
+import {RegistryKeeper} from "./RegistryKeeper.mjs";
+import {ServiceStatus} from "./Status.mjs";
+import {UniqueIdentifierFactory} from "./UniqueIdentifierFactory.mjs";
 
 export let logger = Logger.getDummyAPI();
 export let registryKeeper = RegistryKeeper.getDummyAPI();
-export let rpcId = null;
-export let serviceInstanceId = null;
-export let name = null;
-export let serviceStatus = null;
+let rpcId = null;
+let serviceInstanceId = null;
+let serviceStatus = null;
 
 let serviceInstanceUidFactory = null;
 
@@ -76,14 +75,13 @@ export function initService(config) {
 
 export function initServiceStatus(config) {
     if (serviceStatus == null) {
-        serviceStatus = new Status(config);
+        serviceStatus = new ServiceStatus(config);
         serviceStatus.start();
     }
 }
 
 export function setName(name) {
     rpcId = name;
-    name = name;
 }
 
 export function stop(params, rpcCallback) {

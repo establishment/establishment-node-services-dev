@@ -1,9 +1,9 @@
-import {Queue} from "../core/EntryPoint.mjs";
+import {Queue} from "../core/data-structures/Queue.mjs";
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
 
 
-export default class MetadataBridge {
+export class MetadataBridge {
     constructor(config, uidFactory) {
         this.config = config;
         this.redisPublisher = RedisConnectionPool.getSharedConnection(config.redis.address);

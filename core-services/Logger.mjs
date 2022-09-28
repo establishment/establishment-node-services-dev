@@ -1,8 +1,7 @@
 import {Util} from "../core/EntryPoint.mjs";
+import {RedisStreamPublisher} from "./RedisStreamPublisher.mjs";
 
-import RedisStreamPublisher from "./RedisStreamPublisher.mjs";
-
-export default class Logger {
+export class Logger {
     static Level = {
         none: {
             priority: 999

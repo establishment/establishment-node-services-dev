@@ -1,7 +1,7 @@
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
 
-export default class RedisDispatcher {
+export class RedisDispatcher {
     constructor(config) {
         this.config = config;
         this.redisClient = RedisConnectionPool.getConnection(config.redis);

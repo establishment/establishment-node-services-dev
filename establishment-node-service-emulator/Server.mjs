@@ -1,11 +1,11 @@
 import fs from "fs";
 
 import {Glue} from "../core-services/EntryPoint.mjs";
-import RPCServer from "../core-services/RPCServer.mjs";
+import {RPCServer} from "../core-services/RPCServer.mjs";
 import {setMockMachineId, setMachineIdScript} from "../core-services/Util.mjs";
 import {GCScheduler} from "../core/EntryPoint.mjs";
 
-import ServiceEmulator from "./ServiceEmulator.mjs";
+import {ServiceEmulator} from "./ServiceEmulator.mjs";
 import {LoadDefaultConfig} from "./DefaultConfig.mjs";
 
 export function RunServer(params) {

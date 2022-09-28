@@ -2,7 +2,7 @@ import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
 import * as Glue from "./Glue.mjs";
 
-export default class RegistryKeeper {
+export class RegistryKeeper {
     constructor(config) {
         this.redisPrefix = config.redis.prefix;
         this.redisStream = config.redis.stream;

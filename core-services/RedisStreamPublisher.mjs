@@ -1,6 +1,6 @@
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
-export default class RedisStreamPublisher {
+export class RedisStreamPublisher {
     static MESSAGE_TIMEOUT = 60 * 60 * 5;
 
     constructor(redisAddress, streamName) {

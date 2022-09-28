@@ -3,8 +3,8 @@ import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
 import * as Glue from "./Glue.mjs";
 
-// TODO extend Dispatcher, you fucking idiot
-export default class RPCServer extends EventEmitter {
+// TODO extend Dispatcher, you fucking savage
+export class RPCServer extends EventEmitter {
     constructor(config) {
         super();
         this.config = config;

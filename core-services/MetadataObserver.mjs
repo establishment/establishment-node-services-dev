@@ -2,7 +2,7 @@ import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
 import * as Glue from "./Glue.mjs";
 
-export default class MetadataObserver {
+export class MetadataObserver {
     constructor(config) {
         this.redisConnection = RedisConnectionPool.getSharedConnection(config.redis.address);
 

@@ -1,16 +1,15 @@
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import UniqueIdentifierFactory from "../core-services/UniqueIdentifierFactory.mjs";
+import {UniqueIdentifierFactory} from "../core-services/UniqueIdentifierFactory.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
 
-import MetadataObserver from "./MetadataObserver.mjs";
-import NodeWSServerData from "./NodeWSServerData.mjs";
+import {MetadataObserver} from "./MetadataObserver.mjs";
+import {NodeWSServerData} from "./NodeWSServerData.mjs";
 
-export default class MetadataServer {
+export class MetadataServer {
     static KEEPALIVE_PHASE = {
         WAIT_FOR_NORMAL_KEEPALIVE: 0,
         WAIT_FOR_REQUESTED_KEEPALIVE: 1
     };
-
 
     constructor(config) {
         this.config = config;

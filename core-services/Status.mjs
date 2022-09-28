@@ -1,9 +1,9 @@
 import {Util} from "../core/EntryPoint.mjs";
 
-import RedisStreamPublisher from "./RedisStreamPublisher.mjs";
+import {RedisStreamPublisher} from "./RedisStreamPublisher.mjs";
 import {queryMachineId} from "./Util.mjs";
 
-export default class ServiceStatus {
+export class ServiceStatus {
     constructor(config) {
         this.streamPublisher = new RedisStreamPublisher(config.redis.address, "service_status");
         this.streamPublisher.setPersistence(false);

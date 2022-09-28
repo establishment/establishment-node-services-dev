@@ -1,7 +1,7 @@
-import Stack from "./Stack.mjs";
+import {Stack} from "./Stack.mjs";
 
 // TODO import from Stem
-export default class Queue {
+export class Queue {
     constructor() {
         this.stack = new Stack();
         this.reverseStack = new Stack();
@@ -43,4 +43,4 @@ export default class Queue {
             }
         }
     }
-};
+}

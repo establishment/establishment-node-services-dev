@@ -1,4 +1,4 @@
-export default class PermissionDispatcher {
+export class PermissionDispatcher {
     constructor() {
         this.identificationQueue = new Map();
         this.permissionQueue = new Map();

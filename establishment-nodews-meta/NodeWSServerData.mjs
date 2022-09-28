@@ -1,9 +1,8 @@
 import {Glue} from "../core-services/EntryPoint.mjs";
 
-export default class NodeWSServerData {
+export class NodeWSServerData {
     constructor(metadataObserver) {
         this.metadataObserver = metadataObserver;
-
         this.userConnection = new Map();
     }
 

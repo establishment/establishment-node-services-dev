@@ -1,6 +1,6 @@
 import {RedisConnectionPool} from "./RedisConnectionPool.mjs";
 
-export default class RedisCache {
+export class RedisCache {
     constructor(config) {
         this.redisClient = RedisConnectionPool.getSharedConnection(config.redis.address);
         this.expireStartTime = config.expire.start;

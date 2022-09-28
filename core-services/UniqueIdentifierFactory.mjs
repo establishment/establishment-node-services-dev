@@ -1,10 +1,10 @@
 import * as Glue from "./Glue.mjs";
-import {Queue} from "../core/EntryPoint.mjs";
+import {Queue} from "../core/data-structures/Queue.mjs";
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 
 let factoryUID = 0;
 
-export default class UniqueIdentifierFactory {
+export class UniqueIdentifierFactory {
     constructor(config) {
         this.redisClient = RedisConnectionPool.getSharedConnection(config.redis.address);
         this.uidRedisKeyPrefix = config.redis.prefix;
