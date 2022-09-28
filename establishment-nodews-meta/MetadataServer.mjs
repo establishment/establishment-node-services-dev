@@ -1,6 +1,6 @@
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 import {UniqueIdentifierFactory} from "../core-services/UniqueIdentifierFactory.mjs";
-import {Glue} from "../core-services/EntryPoint.mjs";
+import {Glue} from "../core-services/Glue.mjs";
 
 import {MetadataObserver} from "./MetadataObserver.mjs";
 import {NodeWSServerData} from "./NodeWSServerData.mjs";

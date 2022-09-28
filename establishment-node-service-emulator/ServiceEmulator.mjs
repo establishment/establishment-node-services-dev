@@ -1,8 +1,8 @@
 import netstat from "node-netstat";
 
 import {MathEx} from "../core/EntryPoint.mjs";
-import {Glue} from "../core-services/EntryPoint.mjs";
-import Status from "../core-services/Status.mjs";
+import {Glue} from "../core-services/Glue.mjs";
+import {ServiceStatus} from "../core-services/Status.mjs";
 
 export class ServiceEmulator {
     constructor(config) {
@@ -163,7 +163,7 @@ export class ServiceEmulator {
             this.processNetstatEntry(netstatEntry);
         }
 
-        for (let service of this.services) {
+        for (const service of this.services) {
             if (!service.service.hasOwnProperty("netstatStatus")) {
                 continue;
             }
@@ -171,7 +171,7 @@ export class ServiceEmulator {
                 if (service.service.serviceStatus != null) {
                     continue;
                 }
-                service.service.serviceStatus = new Status(service.service.serviceStatusConfig);
+                service.service.serviceStatus = new ServiceStatus(service.service.serviceStatusConfig);
                 service.service.serviceStatus.start();
             } else {
                 if (service.service.serviceStatus == null) {

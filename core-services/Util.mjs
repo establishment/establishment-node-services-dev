@@ -1,3 +1,9 @@
+import fs from "fs";
+import path from "path";
+import {fileURLToPath} from "url";
+
+import {isPlainObject} from "../../stemjs/src/base/Utils.js";
+
 import {Util} from "../core/EntryPoint.mjs";
 
 import * as Glue from "./Glue.mjs";
@@ -46,4 +52,19 @@ export function getMachineId() {
         queryMachineId();
     }
     return machineId;
+}
+
+export function LoadConfig(pathOrConfig, importMeta) {
+    if (isPlainObject(pathOrConfig)) {
+        return pathOrConfig;
+    }
+
+    let configFilePath = pathOrConfig;
+    if (!configFilePath) {
+        const __filename = fileURLToPath(importMeta.url);
+        const __dirname = path.dirname(__filename);
+        configFilePath = path.resolve(__dirname, "DefaultConfig.json");
+    }
+
+    return JSON.parse(fs.readFileSync(configFilePath, "utf8"));
 }

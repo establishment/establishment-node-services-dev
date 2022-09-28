@@ -6,55 +6,73 @@ import {Logger} from "./Logger.mjs";
 import {RegistryKeeper} from "./RegistryKeeper.mjs";
 import {ServiceStatus} from "./Status.mjs";
 import {UniqueIdentifierFactory} from "./UniqueIdentifierFactory.mjs";
+import {setMachineIdScript, setMockMachineId} from "./Util.mjs";
+import {RPCServer} from "./RPCServer.mjs";
+import {GCScheduler} from "../core/EntryPoint.mjs";
 
 export let logger = Logger.getDummyAPI();
 export let registryKeeper = RegistryKeeper.getDummyAPI();
+export const activeService = {};
 let rpcId = null;
 let serviceInstanceId = null;
 let serviceStatus = null;
 
 let serviceInstanceUidFactory = null;
 
-export function initLogger(config) {
+function initLogger(config) {
     if (logger.hasOwnProperty("isDummy")) {
-        logger = new Logger(config.redisAddress, config.name, Logger.getLevel(config.level));
+        const level = Logger.getLevel(config.level);
+        logger = new Logger(config.redisAddress, config.name, level);
     }
 }
 
-export function initRegistryKeeper (config) {
+function initRegistryKeeper(config) {
     if (registryKeeper.hasOwnProperty("isDummy")) {
         registryKeeper = new RegistryKeeper(config);
     }
 }
 
 export function initService(config) {
-    if (!config.hasOwnProperty("name")) {
+    setMockMachineId(config.machineId.mockId);
+    setMachineIdScript(config.machineId.script);
+
+    initLogger(config.logging);
+    initRegistryKeeper(config.registryKeeper);
+
+    const serviceConfig = config.service;
+
+    if (!serviceConfig.hasOwnProperty("name")) {
         console.log("ServiceGlue::initService failed to setup: missing field \"name\"");
         return;
     }
-    setName(config.name);
-    if (config.hasOwnProperty("status")) {
-        let statusServiceConfig = {
-            "name": config.name,
-            "redis": {
-                "address": config.status.redis.address
-            }
-        };
-        initServiceStatus(statusServiceConfig);
+
+    rpcId = serviceConfig.name;
+
+    if (serviceConfig.status) {
+        if (serviceStatus == null) {
+            serviceStatus = new ServiceStatus({
+                name: serviceConfig.name,
+                redis: {
+                    address: serviceConfig.status.redis.address,
+                }
+            });
+            serviceStatus.start();
+        }
     }
-    if (config.hasOwnProperty("instanceId")) {
+
+    if (serviceConfig.hasOwnProperty("instanceId")) {
         let uidFactoryConfig = {
             "redis": {
-                "address": config.instanceId.uidFactory.redis.address,
+                "address": serviceConfig.instanceId.uidFactory.redis.address,
                 "prefix": "meta-unique-identifier-nodejs-instance"
             }
         };
         serviceInstanceUidFactory = new UniqueIdentifierFactory(uidFactoryConfig);
         serviceInstanceUidFactory.requestUID((id) => {
             serviceInstanceId = id;
-            if (config.instanceId.hasOwnProperty("path")) {
-                let path = config.instanceId.path;
-                path = path.replace("$SERVICE_NAME", config.name);
+            if (serviceConfig.instanceId.hasOwnProperty("path")) {
+                let path = serviceConfig.instanceId.path;
+                path = path.replace("$SERVICE_NAME", serviceConfig.name);
                 fs.mkdir(dirname(path), {recursive: true}, (err) => {
                     if (err) {
                         console.error(`ServiceGlue::initService failed to save service instance id to file "${path}". Error: ${err}.`);
@@ -71,29 +89,31 @@ export function initService(config) {
             serviceInstanceUidFactory = null;
         });
     }
+
+    GCScheduler.configure(config.gc);
+    GCScheduler.setLogger(logger);
+    GCScheduler.start();
+
+    const rpcServer = new RPCServer(config.rpcServer);
+    rpcServer.start();
+
+    rpcServer.on("stop", (params, rpcCallback) => {
+        stopService(params, rpcCallback);
+    });
+
+    activeService.rpcServer = rpcServer;
 }
 
-export function initServiceStatus(config) {
-    if (serviceStatus == null) {
-        serviceStatus = new ServiceStatus(config);
-        serviceStatus.start();
-    }
-}
-
-export function setName(name) {
-    rpcId = name;
-}
-
-export function stop(params, rpcCallback) {
+function stopService(params, rpcCallback) {
     let validRequest = true;
 
-    if (params.hasOwnProperty("serviceInstanceId") && module.exports.serviceInstanceId != null) {
-        if (params["serviceInstanceId"] != String(module.exports.serviceInstanceId)) {
+    if (params.hasOwnProperty("serviceInstanceId") && serviceInstanceId != null) {
+        if (params["serviceInstanceId"] != String(serviceInstanceId)) {
             validRequest = false;
         }
     }
-    if (params.hasOwnProperty("id") && module.exports.rpcId != null) {
-        if (params["id"] != String(module.exports.rpcId)) {
+    if (params.hasOwnProperty("id") && rpcId != null) {
+        if (params["id"] != String(rpcId)) {
             validRequest = false;
         }
     }
@@ -112,7 +132,13 @@ export function stop(params, rpcCallback) {
         serviceInstanceUidFactory = null;
     }
 
-    rpcCallback("Establishment::Glue::stop: Exit from process with rpcId " + module.exports.rpcId);
+    rpcCallback("Establishment::Glue::stop: Exit from process with rpcId " + rpcId);
     RedisConnectionPool.quit();
     process.exit();
 }
+
+export const Glue = {
+    logger,
+    registryKeeper,
+    initService
+};

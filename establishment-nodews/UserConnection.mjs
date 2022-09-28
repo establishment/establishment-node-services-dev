@@ -4,7 +4,7 @@ import {Queue} from "../core/data-structures/Queue.mjs";
 import {Util, MathEx} from "../core/EntryPoint.mjs";
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
 import {RedisStreamPublisher} from "../core-services/RedisStreamPublisher.mjs";
-import {Glue} from "../core-services/EntryPoint.mjs";
+import {Glue} from "../core-services/Glue.mjs";
 
 let uidToUserConnection = new Map();
 

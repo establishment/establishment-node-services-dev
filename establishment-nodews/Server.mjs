@@ -1,46 +1,15 @@
-import fs from "fs";
-
-import {GCScheduler} from "../core/EntryPoint.mjs";
-import {Glue} from "../core-services/EntryPoint.mjs";
-import {RPCServer} from "../core-services/RPCServer.mjs";
-import {setMachineIdScript, setMockMachineId} from "../core-services/Util.mjs";
+import {activeService, Glue} from "../core-services/Glue.mjs";
 
 import {WebsocketServer} from "./WebsocketServer.mjs";
 import {UserConnection} from "./UserConnection.mjs";
-import {LoadDefaultConfig} from "./DefaultConfig.mjs";
+import {LoadConfig} from "../core-services/Util.mjs";
 
-export function RunServer(params) {
-    let config = null;
-    if (params) {
-        if (params.hasOwnProperty("config") && params.config != null) {
-            config = params.config;
-        } else if (params.hasOwnProperty("configFilePath") && params.configFilePath != null) {
-            config = JSON.parse(fs.readFileSync(params.configFilePath, "utf8"));
-        }
-    }
+export function RunServer(pathOrConfig) {
+    const config = LoadConfig(pathOrConfig, import.meta);
 
-    if (!config) {
-        config = LoadDefaultConfig();
-    }
+    Glue.initService(config);
 
-    setMockMachineId(config.machineId.mockId);
-    setMachineIdScript(config.machineId.script);
-    Glue.initLogger(config.logging);
-    Glue.initRegistryKeeper(config.registryKeeper);
-    Glue.initService(config.service);
-
-    GCScheduler.configure(config.gc);
-    GCScheduler.setLogger(Glue.logger);
-    GCScheduler.start();
-
-    let rpcServer = new RPCServer(config.rpcServer);
-    rpcServer.start();
-
-    rpcServer.on("stop", (params, rpcCallback) => {
-        Glue.stop(params, rpcCallback);
-    });
-
-    rpcServer.on("refresh", (params, rpcCallback) => {
+    activeService.rpcServer.on("refresh", (params, rpcCallback) => {
         Glue.logger.info("Refresh command issued: executing now!");
         if (!params.hasOwnProperty("batchSize")) {
             let error = "RPC Refresh error: params does not contain 'batchSize'";

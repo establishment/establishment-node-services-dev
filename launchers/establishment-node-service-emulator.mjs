@@ -1,5 +1,3 @@
 import {RunServer} from "../establishment-node-service-emulator/Server.mjs";
 
-RunServer({
-    "configFilePath": process.argv[2]
-});
+RunServer(process.argv[2]);
