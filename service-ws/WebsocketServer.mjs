@@ -1,4 +1,4 @@
-import ws from "ws";
+import {WebSocketServer as WSServer} from "ws";
 
 import {RedisCache} from "../core/redis/RedisCache.mjs";
 import {PermissionChecker} from "../core-services/permission/PermissionChecker.mjs";
@@ -29,7 +29,7 @@ export class WebsocketServer {
     start() {
         console.log("Starting WebSocketServer", this.config.listen);
 
-        this.webSocketServer = new ws.Server(this.config.listen);
+        this.webSocketServer = new WSServer(this.config.listen);
 
         this.run();
     }

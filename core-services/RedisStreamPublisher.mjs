@@ -32,8 +32,7 @@ export class RedisStreamPublisher {
                     if (error != null) {
                         return;
                     }
-                    this.redisClient.setex(RedisStreamPublisher.getStreamMessageIdPrefix(this.streamName) + reply,
-                                           this.expireTime, message);
+                    this.redisClient.setex(RedisStreamPublisher.getStreamMessageIdPrefix(this.streamName) + reply, this.expireTime, message);
                     this.redisClient.publish(this.streamName, RedisStreamPublisher.formatMessageWithId(message, reply));
                 });
             } else {

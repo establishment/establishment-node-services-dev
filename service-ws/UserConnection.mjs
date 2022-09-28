@@ -69,6 +69,8 @@ export class UserConnection {
             return;
         }
 
+        message = message.toString();
+
         let token = message.split(" ", 5); // Keep a limit of 5 parts
 
         if (token[0] == "s" && token.length == 2) {
