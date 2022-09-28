@@ -1,6 +1,5 @@
 import * as MathEx from "./MathEx.mjs";
-
-import prettysize from "prettysize"; // TODO @mustfix use formatter
+import {Formatter} from "../../csabase/js/util.js";
 
 // NOTE: these are not the actual values, these are just the default ones.
 // Check the config passed to configure(), in this case Config.js6.js file.
@@ -76,7 +75,7 @@ export function start() {
         minTime = MathEx.linearInterpolation(lowerMinTime, upperMinTime, coefficient);
         maxTime = MathEx.linearInterpolation(lowerMaxTime, upperMaxTime, coefficient);
 
-        logger.info("GCScheduler: Resident memory: " + prettysize(memory.rss) + "  Heap total: " + prettysize(memory.heapTotal) + "   Heap used: " + prettysize(memory.heapUsed));
+        logger.warn("GCScheduler: Resident memory: " + Formatter.memory(memory.rss) + "  Heap total: " + Formatter.memory(memory.heapTotal) + "   Heap used: " + Formatter.memory(memory.heapUsed));
         logger.info("GCScheduler: finished in " + gcTime  + " ms.");
         start();
     }, nextMiliSeconds);
