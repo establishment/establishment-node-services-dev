@@ -1,5 +1,5 @@
 {
-  "name": "establishment-node-services",
+  "name": "node-services",
   "version": "0.1.2",
   "description": "Establishment's web platform stack of node services.",
   "main": "index.js",
