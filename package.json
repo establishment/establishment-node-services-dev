@@ -37,7 +37,7 @@
     "bufferutil": "^4.0.6",
     "cookie": "^0.4.1",
     "node-netstat": "^1.8.0",
-    "redis": "^3.0.2",
+    "redis": "^3.1.1",
     "utf-8-validate": "^5.0.9",
     "ws": "^7.3.1"
   }
