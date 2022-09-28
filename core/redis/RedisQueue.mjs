@@ -1,6 +1,6 @@
 import {RedisConnectionPool} from "./RedisConnectionPool.mjs";
 
-export default class RedisQueue {
+export class RedisQueue {
     constructor(queueName, redisAddress, maxQueueSize = 16 * 1024) {
         this.maxQueueSize = maxQueueSize;
         this.queueName = queueName;

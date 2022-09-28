@@ -1,5 +1,5 @@
 import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import {RedisQueue} from "../core/EntryPoint.mjs";
+import {RedisQueue} from "../core/redis/RedisQueue.mjs";
 import {Glue} from "../core-services/EntryPoint.mjs";
 
 export default class MetadataObserver {
