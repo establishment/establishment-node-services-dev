@@ -4,9 +4,9 @@ import {fileURLToPath} from "url";
 
 import {isPlainObject} from "../../stemjs/src/base/Utils.js";
 
-import {Util} from "../core/EntryPoint.mjs";
+import {Util} from "../core/EntryPoint.js";
 
-import * as Glue from "./Glue.mjs";
+import * as Glue from "./Glue.js";
 
 let machineIdScript = null;
 let mockMachineId = -1;

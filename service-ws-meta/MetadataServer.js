@@ -1,9 +1,9 @@
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import {UniqueIdentifierFactory} from "../core-services/UniqueIdentifierFactory.mjs";
-import {Glue} from "../core-services/Glue.mjs";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
+import {UniqueIdentifierFactory} from "../core-services/UniqueIdentifierFactory.js";
+import {Glue} from "../core-services/Glue.js";
 
-import {MetadataObserver} from "./MetadataObserver.mjs";
-import {NodeWSServerData} from "./NodeWSServerData.mjs";
+import {MetadataObserver} from "./MetadataObserver.js";
+import {NodeWSServerData} from "./NodeWSServerData.js";
 
 export class MetadataServer {
     static KEEPALIVE_PHASE = {

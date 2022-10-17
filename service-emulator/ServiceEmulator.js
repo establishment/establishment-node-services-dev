@@ -1,8 +1,8 @@
 import netstat from "node-netstat";
 
-import {MathEx} from "../core/EntryPoint.mjs";
-import {Glue} from "../core-services/Glue.mjs";
-import {ServiceStatus} from "../core-services/Status.mjs";
+import {MathEx} from "../core/EntryPoint.js";
+import {Glue} from "../core-services/Glue.js";
+import {ServiceStatus} from "../core-services/Status.js";
 
 export class ServiceEmulator {
     constructor(config) {

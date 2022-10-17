@@ -1,6 +1,6 @@
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
 
-import * as Glue from "./Glue.mjs";
+import * as Glue from "./Glue.js";
 
 export class MetadataObserver {
     constructor(config) {

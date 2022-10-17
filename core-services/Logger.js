@@ -1,5 +1,5 @@
-import {Util} from "../core/EntryPoint.mjs";
-import {RedisStreamPublisher} from "./RedisStreamPublisher.mjs";
+import {Util} from "../core/EntryPoint.js";
+import {RedisStreamPublisher} from "./RedisStreamPublisher.js";
 
 export class Logger {
     static Level = {

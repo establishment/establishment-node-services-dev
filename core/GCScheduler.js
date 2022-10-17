@@ -1,4 +1,4 @@
-import * as MathEx from "./MathEx.mjs";
+import * as MathEx from "./MathEx.js";
 import {Formatter} from "../../csabase/js/util.js";
 
 // NOTE: these are not the actual values, these are just the default ones.

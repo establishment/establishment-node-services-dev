@@ -1,7 +1,7 @@
-import {Glue} from "../core-services/Glue.mjs";
+import {Glue} from "../core-services/Glue.js";
 
-import {ServiceEmulator} from "./ServiceEmulator.mjs";
-import {LoadConfig} from "../core-services/Util.mjs";
+import {ServiceEmulator} from "./ServiceEmulator.js";
+import {LoadConfig} from "../core-services/Util.js";
 
 export function RunServer(pathOrConfig) {
     const config = LoadConfig(pathOrConfig, import.meta);

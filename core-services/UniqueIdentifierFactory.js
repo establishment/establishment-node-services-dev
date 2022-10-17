@@ -1,6 +1,6 @@
-import * as Glue from "./Glue.mjs";
-import {Queue} from "../core/data-structures/Queue.mjs";
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
+import * as Glue from "./Glue.js";
+import {Queue} from "../core/data-structures/Queue.js";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
 
 let factoryUID = 0;
 

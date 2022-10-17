@@ -1,4 +1,4 @@
-import {RedisConnectionPool} from "./RedisConnectionPool.mjs";
+import {RedisConnectionPool} from "./RedisConnectionPool.js";
 
 export class RedisCache {
     constructor(config) {

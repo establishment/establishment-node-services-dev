@@ -1,7 +1,7 @@
 import EventEmitter from "events";
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
 
-import * as Glue from "./Glue.mjs";
+import * as Glue from "./Glue.js";
 
 // TODO extend Dispatcher, you fucking savage
 export class RPCServer extends EventEmitter {

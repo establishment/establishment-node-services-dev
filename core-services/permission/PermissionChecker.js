@@ -1,8 +1,8 @@
 import EventEmitter from "events";
 
-import * as Glue from "../Glue.mjs";
-import {RedisQueue} from "../../core/redis/RedisQueue.mjs";
-import {RedisConnectionPool} from "../../core/redis/RedisConnectionPool.mjs";
+import * as Glue from "../Glue.js";
+import {RedisQueue} from "../../core/redis/RedisQueue.js";
+import {RedisConnectionPool} from "../../core/redis/RedisConnectionPool.js";
 
 export class PermissionChecker extends EventEmitter {
     constructor(config) {

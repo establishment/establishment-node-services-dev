@@ -1,14 +1,14 @@
 import fs from "fs";
 import {dirname} from "path";
 
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import {Logger} from "./Logger.mjs";
-import {RegistryKeeper} from "./RegistryKeeper.mjs";
-import {ServiceStatus} from "./Status.mjs";
-import {UniqueIdentifierFactory} from "./UniqueIdentifierFactory.mjs";
-import {setMachineIdScript, setMockMachineId} from "./Util.mjs";
-import {RPCServer} from "./RPCServer.mjs";
-import {GCScheduler} from "../core/EntryPoint.mjs";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
+import {Logger} from "./Logger.js";
+import {RegistryKeeper} from "./RegistryKeeper.js";
+import {ServiceStatus} from "./Status.js";
+import {UniqueIdentifierFactory} from "./UniqueIdentifierFactory.js";
+import {setMachineIdScript, setMockMachineId} from "./Util.js";
+import {RPCServer} from "./RPCServer.js";
+import {GCScheduler} from "../core/EntryPoint.js";
 
 export let logger = Logger.getDummyAPI();
 export let registryKeeper = RegistryKeeper.getDummyAPI();

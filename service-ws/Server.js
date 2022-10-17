@@ -1,8 +1,8 @@
-import {activeService, Glue} from "../core-services/Glue.mjs";
+import {activeService, Glue} from "../core-services/Glue.js";
 
-import {WebsocketServer} from "./WebsocketServer.mjs";
-import {UserConnection} from "./UserConnection.mjs";
-import {LoadConfig} from "../core-services/Util.mjs";
+import {WebsocketServer} from "./WebsocketServer.js";
+import {UserConnection} from "./UserConnection.js";
+import {LoadConfig} from "../core-services/Util.js";
 
 export function RunServer(pathOrConfig) {
     const config = LoadConfig(pathOrConfig, import.meta);

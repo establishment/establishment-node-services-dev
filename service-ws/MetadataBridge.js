@@ -1,6 +1,6 @@
-import {Queue} from "../core/data-structures/Queue.mjs";
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import {Glue} from "../core-services/Glue.mjs";
+import {Queue} from "../core/data-structures/Queue.js";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
+import {Glue} from "../core-services/Glue.js";
 
 
 export class MetadataBridge {

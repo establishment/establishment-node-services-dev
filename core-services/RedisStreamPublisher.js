@@ -1,4 +1,4 @@
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
 
 export class RedisStreamPublisher {
     static MESSAGE_TIMEOUT = 60 * 60 * 5;

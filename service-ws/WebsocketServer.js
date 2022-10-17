@@ -1,14 +1,14 @@
 import {WebSocketServer as WSServer} from "ws";
 
-import {RedisCache} from "../core/redis/RedisCache.mjs";
-import {PermissionChecker} from "../core-services/permission/PermissionChecker.mjs";
-import {PermissionDispatcher} from "../core-services/permission/PermissionDispatcher.mjs";
-import {UniqueIdentifierFactory} from "../core-services/UniqueIdentifierFactory.mjs";
-import {MetadataObserver} from "../core-services/MetadataObserver.mjs";
+import {RedisCache} from "../core/redis/RedisCache.js";
+import {PermissionChecker} from "../core-services/permission/PermissionChecker.js";
+import {PermissionDispatcher} from "../core-services/permission/PermissionDispatcher.js";
+import {UniqueIdentifierFactory} from "../core-services/UniqueIdentifierFactory.js";
+import {MetadataObserver} from "../core-services/MetadataObserver.js";
 
-import {RedisDispatcher} from "./RedisDispatcher.mjs";
-import {UserConnection} from "./UserConnection.mjs";
-import {MetadataBridge} from "./MetadataBridge.mjs";
+import {RedisDispatcher} from "./RedisDispatcher.js";
+import {UserConnection} from "./UserConnection.js";
+import {MetadataBridge} from "./MetadataBridge.js";
 
 export class WebsocketServer {
     constructor(config) {

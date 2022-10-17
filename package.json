@@ -19,9 +19,9 @@
     "proxy"
   ],
   "scripts": {
-    "service-emulator": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-emulator/Launcher.mjs",
-    "ws-meta": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-ws-meta/Launcher.mjs",
-    "ws-server": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-ws/Launcher.mjs"
+    "service-emulator": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-emulator/Launcher.js",
+    "ws-meta": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-ws-meta/Launcher.js",
+    "ws-server": "node --use_strict --nouse-idle-notification --expose-gc --experimental-specifier-resolution=node --max-old-space-size=8192 service-ws/Launcher.js"
   },
   "repository": {
     "type": "git",

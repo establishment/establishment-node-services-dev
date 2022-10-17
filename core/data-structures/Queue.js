@@ -1,4 +1,4 @@
-import {Stack} from "./Stack.mjs";
+import {Stack} from "./Stack.js";
 
 // TODO import from Stem
 export class Queue {

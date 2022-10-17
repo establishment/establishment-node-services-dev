@@ -1,7 +1,7 @@
-import {Util} from "../core/EntryPoint.mjs";
+import {Util} from "../core/EntryPoint.js";
 
-import {RedisStreamPublisher} from "./RedisStreamPublisher.mjs";
-import {queryMachineId} from "./Util.mjs";
+import {RedisStreamPublisher} from "./RedisStreamPublisher.js";
+import {queryMachineId} from "./Util.js";
 
 export class ServiceStatus {
     constructor(config) {

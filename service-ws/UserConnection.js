@@ -1,10 +1,10 @@
 import cookieParser from "cookie";
 
-import {Queue} from "../core/data-structures/Queue.mjs";
-import {Util, MathEx} from "../core/EntryPoint.mjs";
-import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.mjs";
-import {RedisStreamPublisher} from "../core-services/RedisStreamPublisher.mjs";
-import {Glue} from "../core-services/Glue.mjs";
+import {Queue} from "../core/data-structures/Queue.js";
+import {Util, MathEx} from "../core/EntryPoint.js";
+import {RedisConnectionPool} from "../core/redis/RedisConnectionPool.js";
+import {RedisStreamPublisher} from "../core-services/RedisStreamPublisher.js";
+import {Glue} from "../core-services/Glue.js";
 
 let uidToUserConnection = new Map();
 
