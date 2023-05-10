@@ -3,7 +3,7 @@
         "name": "nodews",
         "status": {
             "redis": {
-                "address": null
+                "address": "redis://redis1/"
             }
         },
         "instanceId": {
